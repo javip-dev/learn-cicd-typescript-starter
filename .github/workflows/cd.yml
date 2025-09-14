@@ -37,3 +37,6 @@ jobs:
 
       - name: Push image to google artifact registry
         run: gcloud builds submit --tag europe-west1-docker.pkg.dev/ci-cd-learn-471805/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image europe-west1-docker.pkg.dev/ci-cd-learn-471805/notely-ar-repo/notely:latest --region europe-west1 --allow-unauthenticated --project ci-cd-learn-471805 --max-instances=4
